@@ -1,0 +1,36 @@
+@(users: List[models.User])
+
+@import com.feth.play.module.pa.views.html._
+
+@main(Messages("playauthenticate.profile.title"),"profile") {
+    
+    <h1>User List</h1>
+		<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Last Login</th>
+						<th>Roles</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for(user <- users) {
+
+							<td>@user.name</td>
+							<td>@user.email</td>
+							<td>@user.lastLogin</td>
+							<td>
+								@for(role <- user.roles){
+									@role.roleName <br>
+								}
+							</td>
+							
+						
+						</tr>
+						
+					}
+					
+				</tbody>
+				</table>
+}
